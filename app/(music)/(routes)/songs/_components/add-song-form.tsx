@@ -41,7 +41,6 @@ const AddSongForm = ({
     });
 
     useEffect(() => {
-        console.log(form.status)
         if (form.status === 'success') {
             setFormOpen(false)
         }
@@ -66,7 +65,6 @@ const AddSongForm = ({
                 } else {
                     res = await uploadSong(data)
                 }
-                console.log(res)
 
                 if (!res.success) {
                     toast.error(res.error)

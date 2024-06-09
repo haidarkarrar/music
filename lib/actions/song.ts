@@ -4,7 +4,7 @@ import { parseWithZod } from "@conform-to/zod";
 import { songSchema } from "../validations/song-validation-schema";
 import db from "@/drizzle/db";
 import { songs } from "@/drizzle/schema";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 
 export const insertSong = async (_: unknown, formData: FormData) => {
@@ -13,7 +13,6 @@ export const insertSong = async (_: unknown, formData: FormData) => {
     })
 
     if (submission.status !== 'success') {
-        console.log(submission.payload)
         return submission.reply();
     }
     const { name, image, songUrl, albumId, artistId } = submission.value
@@ -27,7 +26,7 @@ export const insertSong = async (_: unknown, formData: FormData) => {
             artistId: parseInt(artistId),
         })
 
-        revalidatePath("/music/songs")
+        revalidateTag("get-songs")
         return submission.reply()
     } catch (error) {
         return submission.reply()

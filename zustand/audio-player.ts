@@ -1,5 +1,5 @@
 import { Song } from '@/drizzle/schema';
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface AudioPlayerState {
     isOpen: boolean;

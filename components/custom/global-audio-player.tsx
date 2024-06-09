@@ -65,7 +65,6 @@ const GlobalAudioPlayer: React.FC = () => {
                 <div>
                     <AudioPlayer
                         src={currentSong.songUrl}
-                        onPlay={() => console.log('play')}
                         onClickPrevious={previousSong}
                         onClickNext={nextSong}
                         onEnded={nextSong}

@@ -9,7 +9,6 @@ import { getAlbums } from '@/lib/data/album'
 import { getArtists } from '@/lib/data/artist'
 import AddSong from './_components/add-song'
 import { getSongs } from '@/lib/data/song'
-import AudioPlayerComponent from './_components/audio-player'
 import SongCard from './_components/song-card'
 
 const AlbumsPage = async () => {
@@ -18,8 +17,6 @@ const AlbumsPage = async () => {
     const albumsData = getAlbums()
 
     const [songs, artists, albums] = await Promise.all([songsData, artistsData, albumsData])
-
-    console.log(songs)
 
     return (
         <div className='col-span-3 lg:col-span-4 p-6 lg:border-l'>

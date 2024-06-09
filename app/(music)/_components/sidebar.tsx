@@ -99,7 +99,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               Playlists
             </Button> */}
             <SidebarItem
-              href="/music/songs"
+              href="/songs"
               title="Songs"
               svgIcon={<svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               Made for You
             </Button> */}
             <SidebarItem
-              href="/music/artists"
+              href="/artists"
               title="Artists"
               svgIcon={<svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               </svg>}
             />
             <SidebarItem
-              href="/music/albums"
+              href="/albums"
               title="Albums"
               svgIcon={<svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
 'use client'
 
-import { Artwork } from '@/app/music/_components/artwork'
+import { Artwork } from '@/app/(music)/_components/artwork'
 import { Button } from '@/components/ui/button'
 import { Album, Artist, Song } from '@/drizzle/schema'
 import { useAudioPlayerStore } from '@/zustand/audio-player'

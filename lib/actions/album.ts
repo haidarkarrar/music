@@ -5,7 +5,7 @@ import { Album, Artist, albums } from "@/drizzle/schema"
 import { parseWithZod } from "@conform-to/zod"
 import { eq } from "drizzle-orm"
 import { albumSchema } from "../validations/album-validation-schema"
-import { revalidatePath } from "next/cache"
+import { revalidateTag } from "next/cache"
 
 
 export const insertAlbum = async (_: any, formData: FormData) => {
@@ -25,7 +25,7 @@ export const insertAlbum = async (_: any, formData: FormData) => {
             artistId: parseInt(artistId),
         })
 
-        revalidatePath("/music/albums")
+        revalidateTag("get-albums")
     } catch (error) {
         return submission.reply();
     }

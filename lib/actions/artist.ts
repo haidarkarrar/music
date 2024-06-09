@@ -5,7 +5,7 @@ import { Artist, artists } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { parseWithZod } from '@conform-to/zod';
 import { artistSchema } from "../validations/artist-validation-schema";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 
 export const insertArtist = async (_: unknown, formData: FormData) => {
@@ -14,7 +14,6 @@ export const insertArtist = async (_: unknown, formData: FormData) => {
     })
 
     if (submission.status !== 'success') {
-        console.log(submission.payload)
         return submission.reply();
     }
     const { name, image } = submission.value
@@ -25,7 +24,7 @@ export const insertArtist = async (_: unknown, formData: FormData) => {
             image,
         })
 
-        revalidatePath("/music/artists")
+        revalidateTag("get-artists")
         return submission.reply()
     } catch (error) {
         return submission.reply()

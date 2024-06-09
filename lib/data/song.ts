@@ -1,8 +1,9 @@
 import db from "@/drizzle/db";
 import { songs, Song, artists, albums } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
+import { unstable_cache } from "next/cache";
 
-export async function getSongs() {
+export const getSongs = unstable_cache(async () => {
     const result = await db.select({
         id: songs.id,
         name: songs.name,
@@ -27,7 +28,9 @@ export async function getSongs() {
         .leftJoin(albums, eq(songs.albumId, albums.id))
 
     return result;
-}
+}, ['get-songs'], {
+    tags: ['get-songs'],
+})
 
 export async function getSong(id: number) {
     const result = await db.query.songs.findFirst({

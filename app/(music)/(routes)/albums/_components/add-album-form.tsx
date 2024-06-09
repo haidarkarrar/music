@@ -46,7 +46,6 @@ const AddAlbumForm = ({
     const image = useInputControl(fields.image)
     const artistId = useInputControl(fields.artistId)
 
-    console.log(artistId.value)
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) return
@@ -62,7 +61,7 @@ const AddAlbumForm = ({
                 image.change(res.path)
             })
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 
